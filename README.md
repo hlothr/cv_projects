@@ -9,6 +9,10 @@ In that project I used [youtube_dl](https://github.com/ytdl-org/youtube-dl/blob/
 # pip download
 after clining the repository all you need to do is in the venv terminal write:
 ```
+git clone https://github.com/hlothr/cv_projects.git
+cd cv_projects
 pip install -r requirments.txt
+python music_download_full.py
+python word_parser.py
 ```
 
