@@ -7,7 +7,7 @@ In the yellow rectangle specify the the text file and push the "Start" button. A
 ## Music Downloader
 In that project I used [youtube_dl](https://github.com/ytdl-org/youtube-dl/blob/master/README.md) in order to download .wav and .mp4 files. The downloads can be done in singular manner or in batch by choosing different option specified in the program
 # pip download
-after clining the repository all you need to do is in the venv terminal write:
+to clone the repository and launch the programs all you need to do is to write:
 ```
 git clone https://github.com/hlothr/cv_projects.git
 cd cv_projects
@@ -15,4 +15,4 @@ pip install -r requirments.txt
 python music_download_full.py
 python word_parser.py
 ```
-
+in cmd
