@@ -9,6 +9,6 @@ In that project I used [youtube_dl](https://github.com/ytdl-org/youtube-dl/blob/
 # pip download
 after clining the repository all you need to do is in the venv terminal write:
 ```
-pip install requirments.txt
+pip install -r requirments.txt
 ```
 
