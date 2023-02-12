@@ -1,6 +1,10 @@
 import youtube_dl
+import shutil
+import os
 
 
+path_given = False
+path_destination = ''
 def vav_single_file(url):
     try:
         video_info = youtube_dl.YoutubeDL().extract_info(
@@ -58,15 +62,18 @@ while True:
 
     print('''
     Usage:
-    If you want to download a single file with the .vav extension use [1] command
+    If you want to specify a directory the files should be downloaded to use [0] command 
+    *note the path is saved till the end of the session
+    *note all files with the .wav and .mp4 extension shall be moved to the new directory
+    If you want to download a single file with the .wav extension use [1] command
     If you want to download the full content of the channel with the .vav extension use the [2] command
     If you want  to download a file with the .mp4 extension use [3] command
     if you want to exit the program use [4] command''')
     a = input('I want to []: ')
-    list_var = ['1', '2', '3', '4']
+    list_var = ['1', '2', '3', '4', '0']
 
     if a not in list_var:
-        print('the input is not correct, you may only choose 1, 2, 3 or 4')
+        print('the input is not correct, you may only choose 0, 1, 2, 3 or 4')
 
     else:
         if a == '1':
@@ -91,5 +98,18 @@ while True:
             url = input('please give the url of the file you want to download from youtube: ')
             mp4_download(url)
 
-        else:
+        elif a == '4':
             break
+        else:
+            path_temp = input('input the file directory you want to download to: ')
+            if os.path.exists(path_temp):
+                path_given = True
+                path_destination = path_temp
+            else:
+                print('the specified path does not exist, please try again')
+        if path_given:
+            cwd = os.listdir(os.getcwd())
+            for file in cwd:
+                if str(file).endswith('wav') or str(file).endswith('mp4'):
+                    full_path_current = str(os.getcwd())+'\\'+file
+                    shutil.move(full_path_current, path_destination)
