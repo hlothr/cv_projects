@@ -109,7 +109,8 @@ while True:
                 print('the specified path does not exist, please try again')
         if path_given:
             cwd = os.listdir(os.getcwd())
-            list_elements = ['.git', '.gitignore', '.idea', 'cv_projects', 'LICENSE', 'music_download_full.py', 'README.md', 'requirments.txt', 'word_parser.py']
+            list_elements = ['.git', '.gitignore', '.idea', 'cv_projects', 'LICENSE', 'music_download_full.py',
+                             'README.md', 'requirments.txt', 'word_parser.py']
             for file in cwd:
                 if file not in list_elements:
                     full_path_current = str(os.getcwd())+'\\'+file
