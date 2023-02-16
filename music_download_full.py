@@ -114,4 +114,7 @@ while True:
             for file in cwd:
                 if file not in list_elements:
                     full_path_current = str(os.getcwd())+'\\'+file
-                    shutil.move(full_path_current, path_destination)
+                    try:
+                        shutil.move(full_path_current, path_destination)
+                    except Exception as e:
+                        print(f'Failed to move the file due to {e}')
