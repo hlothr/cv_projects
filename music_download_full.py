@@ -1,61 +1,35 @@
 import youtube_dl
 import shutil
 import os
-
+from pytube import YouTube
 
 path_given = False
 path_destination = ''
+
+
 def vav_single_file(url):
-    try:
-        video_info = youtube_dl.YoutubeDL().extract_info(
-            url=url,
-            download=False
-        )
-        file_name = f'{video_info["title"]}.wav'
-        options = {
-            'format': 'bestaudio/best',
-            'keepvideo': False,
-            'outtmpl': file_name,
-        }
-        with youtube_dl.YoutubeDL(options) as ydl:
-            ydl.download([video_info['webpage_url']])
-        print(f'download complete... {file_name}')
-    except Exception:
-        print(f'download failed')
+    yt = YouTube(str(url))
+    video = yt.streams.filter(only_audio=True).first()
+    destination = os.getcwd()
+    out_file = video.download(output_path=destination)
+
+    base, ext = os.path.splitext(out_file)
+    new_file = base + '.wav'
+    os.rename(out_file, new_file)
 
 
 def download_channel_vav(path_name):
-    with open(path_name, 'r') as f:
-        lines = f.readlines()
-    lista = []
-    for line in lines:
-        if str(line).startswith('[youtube]'):
-            done = str(line).replace('[youtube] ', '')
-            done = done.replace(': Downloading webpage\n', '')
-            lista.append(done)
-    for el in lista:
-        result = 'https://www.youtube.com/watch?v='+str(el)
-        vav_single_file(result)
+    pass
 
 
 def mp4_download(url):
-    try:
-        video_info = youtube_dl.YoutubeDL().extract_info(
-            url=url, download=True
-        )
-        filename = f"{video_info['title']}.mp4"
-        options = {
-            'format': 'bestaudio/best',
-            'keepvideo': True,
-            'outtmpl': filename,
-        }
-
-        with youtube_dl.YoutubeDL(options) as ydl:
-            ydl.download([video_info['webpage_url']])
-
-        print("Download complete... {}".format(filename))
-    except Exception:
-        print('download failed')
+    yt = YouTube(str(url))
+    video = yt.streams.filter().first()
+    destination = os.getcwd()
+    out_file = video.download(output_path=destination)
+    base, ext = os.path.splitext(out_file)
+    new_file = base + '.mp4'
+    os.rename(out_file, new_file)
 
 
 while True:
@@ -66,7 +40,7 @@ while True:
     *note the path is saved till the end of the session
     *note all files with the .wav and .mp4 extension shall be moved to the new directory
     If you want to download a single file with the .wav extension use [1] command
-    If you want to download the full content of the channel with the .vav extension use the [2] command
+    If you want to download the full content of the channel with the .wav extension use the [2] command
     If you want  to download a file with the .mp4 extension use [3] command
     if you want to exit the program use [4] command''')
     a = input('I want to []: ')
