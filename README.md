@@ -18,7 +18,7 @@ While writing this script I had the help of AI from chatgpt.com [site](https://c
 When the program is run, it creates a terminal and a tkinter windows, tkiter windows provides a variety of opetions, to first identify local ip adresses and then connect via ssh
 Do mind the ssh protocle has a list of extensive parameters that the program does not help with
 To connect the ssh client side to the ssh server, first you must create public and a private key that are kept in the server ssh folder and client ssh folder respectively
-#IN CMD (WINDOWS ONLY)
+# IN CMD (WINDOWS ONLY)
 ```
 git clone https://github.com/hlothr/cv_projects.git
 cd cv_projects
