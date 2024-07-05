@@ -25,5 +25,5 @@ cd cv_projects
 pip install -r requirments.txt
 python music_download_full.py
 python word_parser.py
-python ssh client.py
+python ssh_client.py
 ```
